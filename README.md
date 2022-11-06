@@ -21,14 +21,60 @@
 ```
 git clone https://github.com/
 ```
+2. Move to the folder containing the project and docker-compose.yml, to run the following commands.
 
-Acessar pelo terminal do VScode ou pelo terminal do Windows acessar o local do docker-compose.yml e seguir os passos abaixo.
+    - Build docker images
+    ```
+    docker compose build
+    ```
 
-Usar o comando do docker para criar as imagens.<br>
-`docker compose build`
+    - Running containers
+    ```
+    docker compose up
+    ```
 
-Usar o comando do docker para subir os containers.<br>
-`docker compose up`
+3. Check if the containers are running.
+```
+docker compose ps
+```
 
-No caso do SQL não iniciar antes do container da aplicação repetir o comando acima.<br>
-`docker compose up`
+## Good to know
+
+If the Mysql container runs after app container, you can following this commands to solve this issue.
+
+- 
+    ```
+    docker compose down
+    ```
+
+- 
+    ```
+    docker compose up
+    ```
+
+## Acess simple web API
+
+1. Go to the browser of your preference and acess http://localhost:5000
+
+    If you see this message: 
+    
+    `
+    API Rest - Olá Inoa
+    `
+    
+    Everything is working fine.
+    
+2. Acess the endpoint http://localhost:5000/message of the API.
+    If you see this return:
+    
+    `
+    {
+        "messages": {
+            "1": "Ola, Inoa!"
+        }
+    }
+    `
+    
+    Everithing is ok!
+    
+## Well done! :rocket:

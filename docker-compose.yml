@@ -1,0 +1,32 @@
+services:
+  pythonapp:
+    build: ./python/
+    image: py_mysql
+    container_name: py_mysql
+    restart: always
+    volumes:
+      - C:\Users\Helum\PycharmProjects\pydbcompose\python:/app
+    command: python3 ./app.py
+    ports:
+      - "5000:5000"
+    networks:
+      - inoa-network
+    depends_on:
+      - mysql
+    
+  mysql:
+    build: ./mysql/
+    image: mysql_db
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'db'
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - "3306"
+    networks:
+      - inoa-network
+
+networks:
+  inoa-network:
+    driver: bridge
